@@ -43,21 +43,21 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            MY telegram <span>-&gt;</span>
+            TeleMY <span>-&gt;</span>
           </h2>
           <p>This is unofficial telegram web project</p>
         </a>
 
         <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          href="https://blog.muhyo.uz"
           className={styles.card}
           target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
-            Learn <span>-&gt;</span>
+            Blog <span>-&gt;</span>
           </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
+          <p>This is my personal blog quizzes!</p>
         </a>
 
         <a
