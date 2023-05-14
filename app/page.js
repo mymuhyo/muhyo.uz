@@ -44,9 +44,9 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            TeleMY <span>-&gt;</span>
+            About <span>-&gt;</span>
           </h2>
-          <p>This is unofficial telegram web project</p>
+          <p></p>
         </a>
 
         <a
@@ -68,9 +68,9 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            Templates <span>-&gt;</span>
+            Telegram <span>-&gt;</span>
           </h2>
-          <p>Explore the Next.js 13 playground.</p>
+          <p>This is my unofficial telegram web project.</p>
         </a>
 
         <a
