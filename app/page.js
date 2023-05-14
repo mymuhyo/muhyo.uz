@@ -57,7 +57,7 @@ export default function Home() {
           <h2>
             Blog <span>-&gt;</span>
           </h2>
-          <p>This is my personal blog quizzes!</p>
+          <p>This is my personal blog</p>
         </a>
 
         <a
