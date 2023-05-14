@@ -7,11 +7,11 @@ export default function Home() {
       <div className={styles.description}>
         <div>
           <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
+            href="https://muhyo.uz/"
+            // target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            {/* By{' '}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -19,7 +19,8 @@ export default function Home() {
               width={100}
               height={24}
               priority
-            />
+            /> */}
+            <h1>MuhYo</h1>
           </a>
         </div>
       </div>
