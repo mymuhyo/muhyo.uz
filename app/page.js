@@ -7,7 +7,7 @@ export default function Home() {
       <div className={styles.description}>
         <div>
           <a
-            href="№"
+            href="#"
             // target="_blank"
             rel="noopener noreferrer"
           >
