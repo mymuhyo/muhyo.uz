@@ -7,7 +7,7 @@ export default function Home() {
       <div className={styles.description}>
         <div>
           <a
-            href="https://muhyo.uz/"
+            href="№"
             // target="_blank"
             rel="noopener noreferrer"
           >
@@ -39,7 +39,7 @@ export default function Home() {
 
       <div className={styles.grid}>
         <a
-          href="https://tweb.muhyo.uz"
+          href="https://about.muhyo.uz"
           className={styles.card}
           target="_blank"
           rel="noopener noreferrer"
@@ -47,7 +47,7 @@ export default function Home() {
           <h2>
             About <span>-&gt;</span>
           </h2>
-          <p></p>
+          <p>This page for about me</p>
         </a>
 
         <a
@@ -63,7 +63,7 @@ export default function Home() {
         </a>
 
         <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          href="https://tweb.muhyo.uz"
           className={styles.card}
           target="_blank"
           rel="noopener noreferrer"
@@ -74,8 +74,8 @@ export default function Home() {
           <p>This is my unofficial telegram web project.</p>
         </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        {/* <a
+          href=""
           className={styles.card}
           target="_blank"
           rel="noopener noreferrer"
@@ -86,7 +86,7 @@ export default function Home() {
           <p>
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
-        </a>
+        </a> */}
       </div>
     </main>
   )
