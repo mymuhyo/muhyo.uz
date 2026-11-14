@@ -1,0 +1,17 @@
+# Deployed site = committed static pages only. This is the public surface.
+.git/
+.github/
+.claude/
+.firecrawl/
+node_modules/
+tools/
+.vercel
+.env*
+.gitignore
+*.md
+LICENSE
+build.py
+vercel.json
+package.json
+package-lock.json
+posts/_template.html
