@@ -150,12 +150,15 @@ p {
 
 .kicker {
   margin: 0 0 var(--s-6);
+  max-width: 40ch;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
+  line-height: 1.7;
   text-transform: uppercase;
   color: var(--accent);
+  text-wrap: pretty;
 }
 
 .section-kicker {
@@ -646,7 +649,7 @@ a:hover {
 
 @media (min-width: 64rem) {           /* 1024px */
   .hero {
-    padding-block: var(--s-16) var(--s-24);
+    padding-block: var(--s-16) var(--s-16);
   }
 
   .hero .wrap {
