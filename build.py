@@ -54,6 +54,9 @@ def list_item(p) -> str:
         f'    <time class="essay-date" datetime="{p["date"].isoformat()}">'
         f'{p["date"].strftime("%d %b %Y")}</time>\n'
         f'    <span class="essay-title">{html.escape(p["title"])}</span>\n'
+        f'    <span class="essay-arrow" aria-hidden="true"><svg viewBox="0 0 24 24">'
+        f'<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" '
+        f'stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></span>\n'
         f'  </a></li>'
     )
 

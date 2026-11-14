@@ -59,3 +59,55 @@ and the empty blocks hide themselves (`.essay-list:has(li) + .essays-empty`).
 Remaining owner actions, in order: write/approve starter essay(s) → `python3 build.py` → point
 `muhyo.uz` DNS at a static host → confirm the LinkedIn vanity URL (`/in/muhyo` assumed) →
 optional: swap typographic wordmark for the glossy badge if he prefers it.
+
+## 2026-11-14 — Optimization pass (UI/UX)
+
+Scope: post-audit UI/UX + performance pass. No gates were lowered; nothing below is
+marketing copy for itself — raw numbers are raw numbers.
+
+**Changes**
+- `styles.css`: `@import` of `assets/fonts/fonts.css` replaced with the six `@font-face`
+  rules inlined at the top (paths rewritten). One less render-blocking request in the
+  critical path; `fonts.css` deleted. Unicode-range split unchanged (latin-ext still
+  downloads only when needed).
+- View transitions: `@view-transition { navigation: auto }` — same-origin page
+  navigations crossfade in Chromium 126+ / Safari 18.2+. Pure CSS; disabled entirely
+  under `prefers-reduced-motion: reduce` (`navigation: none`).
+- Essay rows (build.py + CSS): rows now carry a hover/focus-revealed arrow
+  (opacity/transform 160ms; forced visible under `hover: none`; hidden in print).
+  Verified end-to-end with a throwaway post: build spliced the row, the empty state
+  hid itself via `.essay-list:has(li) + .essays-empty`, then the post was removed and
+  `build.py` restored the empty list (idempotent).
+- Footer colophon: now its own full-width row (`flex: none; width: 100%;
+  max-width: none`) with the mono line left and a new **Back to the Top** link right.
+  Root-cause note: the global `p { max-width: 68ch }` was clamping the flex child to
+  ~68ch, so `flex: 1 1 100%` rendered at ~476px on the same line as the socials —
+  percentage flex-basis was a red herring; `max-width: none` is the actual fix.
+- New: `404.html` (noindex; kicker "404 · Lost in the Ledger", honest copy, two
+  doors: Read the Essays / Home), `humans.txt`.
+- Print: `@page` 2cm margins; header/skip-link/CTA row/portrait/socials/arrows
+  hidden; links inked + underlined; `break-inside: avoid` on rows/facts/empty state;
+  headings `break-after: avoid`. Emulated print-media screenshot inspected — clean.
+- Windows High Contrast: `@media (forced-colors: active)` — system keywords
+  (`CanvasText`, `ButtonFace`/`ButtonText`, `LinkText`, `Highlight` ring) so chrome
+  stays legible without any reliance on the site's palette. Emulated capture inspected.
+- `@media (prefers-contrast: more)`: meta text promotes to `--ink-soft`, accent
+  darkens (light #173d7e / dark #b7cdf5), hairlines strengthen — both themes.
+- `.github/workflows/verify.yml`: on push — build.py idempotence (`git diff
+  --exit-code`), real-browser verify of `/`, `/essays.html`, `/404.html`, W3C Nu on
+  the four HTML files. (Zero JS kept absolute; no theme toggle.)
+
+**Re-verified after the pass**
+- `tools/verify.mjs`: `/`, `/essays.html`, `/404.html` — 0 console errors,
+  0 pageerrors, 0 request failures, **0 axe violations** (light & dark), LCP 72–140 ms
+  (localhost, Slow 4G + 4× CPU), CLS 0–0.0132 (within the 0.1 budget).
+- W3C Nu: **0 errors** on `index.html`, `essays.html`, `404.html`, `posts/_template.html`.
+- `build.py`: 0 posts → markers spliced back to empty exactly (`git diff` clean
+  outside the intended hunks).
+
+**Not re-run in this pass**
+- Lighthouse (no deploy; the one structural perf change removes a render-blocking
+  request — previous 100/100/100/100 stands until the next deploy, then remeasure).
+- Manual screen-reader pass, human five-second test — still open, unchanged.
+- forced-colors/print were verified by emulation screenshots, not on real Windows
+  High Contrast hardware or a physical printer.

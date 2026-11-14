@@ -1,0 +1,14 @@
+/* TEAM */
+MuhYo — Muhammadyokub Yusuf
+Site: https://muhyo.uz
+GitHub: https://github.com/mymuhyo
+X: https://x.com/muhyoyusuf
+LinkedIn: https://www.linkedin.com/in/muhyo
+
+/* SITE */
+Built by hand: static HTML + CSS. Zero JavaScript.
+Fonts: Newsreader & JetBrains Mono — self-hosted, subset latin + latin-ext.
+Colors: paper & ink, one cobalt accent. Dark theme follows prefers-color-scheme.
+No trackers, no cookies, no analytics, no popups, no newsletter capture.
+Images: hand-generated halftone portrait from the author's photo.
+Feed: https://muhyo.uz/rss.xml

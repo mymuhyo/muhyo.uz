@@ -4,7 +4,57 @@
    No gradients. No shadows. No glass. Hairlines and type only.
    ============================================================ */
 
-@import url('assets/fonts/fonts.css');
+/* ---------- Fonts: self-hosted, latin + latin-ext only ----------
+   (inlined from former assets/fonts/fonts.css — removes the
+    stylesheet @import waterfall: zero extra round-trips) ---------- */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('assets/fonts/Newsreader-normal-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('assets/fonts/Newsreader-normal-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('assets/fonts/Newsreader-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('assets/fonts/Newsreader-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('assets/fonts/JetBrainsMono-normal-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('assets/fonts/JetBrainsMono-normal-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 :root {
   color-scheme: light;
@@ -73,6 +123,11 @@
     --selection: rgb(147 180 232 / 22%);
   }
 }
+
+/* ---------- View transitions ----------
+   Cross-document crossfade between pages (Chromium 126+, Safari 18.2+).
+   Progressive: unsupported browsers navigate normally. Disabled under reduce. */
+@view-transition { navigation: auto; }
 
 /* ---------- Reset ---------- */
 
@@ -430,7 +485,7 @@ a:hover {
 
 .essay-list a {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   gap: var(--s-6);
   align-items: baseline;
   padding: var(--s-6) var(--s-2);
@@ -447,6 +502,34 @@ a:hover {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+
+/* Arrow appears on hover/focus — a quiet affordance, not a gimmick */
+.essay-arrow {
+  align-self: center;
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--muted);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity var(--t-fast) var(--ease-out),
+              transform var(--t-fast) var(--ease-out),
+              color var(--t-fast) var(--ease-out);
+}
+
+.essay-arrow svg { width: 100%; height: 100%; }
+
+.essay-list a:hover .essay-arrow,
+.essay-list a:focus-visible .essay-arrow {
+  opacity: 1;
+  transform: none;
+  color: var(--accent);
+}
+
+/* No hover on touch — the affordance is always visible there */
+@media (hover: none) {
+  .essay-arrow { opacity: 1; transform: none; }
 }
 
 .essay-title {
@@ -581,7 +664,14 @@ a:hover {
 .socials svg { width: 1.05em; height: 1.05em; }
 
 .colophon {
-  flex: 1 1 100%;
+  flex: none;
+  width: 100%;
+  max-width: none;          /* p caps at 68ch — a flex row needs the full wrap */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3) var(--s-6);
   margin: var(--s-6) 0 0;
   padding-top: var(--s-6);
   border-top: 1px solid var(--hairline);
@@ -590,6 +680,25 @@ a:hover {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.to-top {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  transition: color var(--t-fast) var(--ease-out),
+              border-color var(--t-fast) var(--ease-out);
+}
+
+.to-top:hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent);
 }
 
 /* ---------- Essays page & posts ---------- */
@@ -674,6 +783,8 @@ a:hover {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
+  @view-transition { navigation: none; }
+
   *, *::before, *::after {
     transition: none !important;
     animation: none !important;
@@ -682,3 +793,95 @@ a:hover {
 
 /* Hide the honest empty state once at least one essay exists */
 .essay-list:has(li) + .essays-empty { display: none; }
+
+/* ---------- Forced colors (Windows High Contrast) ----------
+   The browser drops custom colors; we keep structure visible with system keywords. */
+@media (forced-colors: active) {
+  .skip-link {
+    background: Canvas;
+    color: LinkText;
+    outline: 1px solid LinkText;
+  }
+
+  .btn {
+    background: ButtonFace;
+    color: ButtonText;
+    border: 1px solid ButtonText;
+  }
+
+  .wordmark { color: LinkText; }
+  .wordmark::after { color: currentColor; }
+
+  .kicker, .section-kicker, .empty-kicker, .article-meta,
+  .essay-date, .colophon, .footer-note, .cta-note { color: CanvasText; }
+
+  .essays-empty { border-left-color: CanvasText; }
+
+  .portrait picture, .section-rule, .about, .site-header, .site-footer,
+  .facts, .facts > div, .essay-list li { border-color: CanvasText; }
+
+  .essay-list a:hover { background: Canvas; outline: 1px solid Highlight; }
+
+  :focus-visible { outline: 2px solid Highlight; }
+
+  .essay-arrow { opacity: 1; transform: none; color: LinkText; }
+}
+
+/* ---------- More contrast (prefers-contrast: more) ---------- */
+
+@media (prefers-contrast: more) {
+  :root {
+    --muted: var(--ink-soft);      /* promote meta text to full secondary ink */
+    --accent: #173d7e;             /* 9.20:1 — was 6.83:1 */
+    --hairline: #a49e8d;           /* decorative rules gain real visibility */
+  }
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root {
+    --muted: var(--ink-soft);
+    --accent: #b7cdf5;             /* 10.68:1 */
+    --hairline: #4a5a80;
+  }
+}
+
+/* ---------- Print: paper, not pixels ---------- */
+
+@page { margin: 2cm; }
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+    line-height: 1.5;
+    -webkit-print-color-adjust: economy;
+  }
+
+  p { max-width: none; }
+
+  h1, h2 { font-size: 17pt; }
+
+  /* Chrome that's navigation, media, or affordances — ink is for content */
+  .site-header, .skip-link, .cta-row, .portrait,
+  .to-top, .socials, .essay-arrow { display: none; }
+
+  a { color: #000; text-decoration: underline; }
+
+  .essays, .about, .hero { padding-block: 0.75cm; }
+
+  .about { border-top-color: #666; }
+
+  .facts, .facts > div { border-color: #666; }
+
+  .essay-list li { border-top-color: #666; }
+
+  .colophon {
+    border-top-color: #666;
+    color: #333;
+  }
+
+  /* Honest pagination: never split a row or a quote across pages */
+  .essay-list li, .essays-empty, .facts > div { break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; }
+}

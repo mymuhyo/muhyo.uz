@@ -1,3 +1,10 @@
 node_modules/
 .firecrawl/
 posts/_draft*
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+.vercel/
+.netlify/

@@ -1,5 +1,7 @@
 # muhyo.uz — MuhYo
 
+[![verify](https://github.com/mymuhyo/muhyo.uz/actions/workflows/verify.yml/badge.svg)](https://github.com/mymuhyo/muhyo.uz/actions/workflows/verify.yml)
+
 Personal site of **Muhammadyokub Yusuf (MuhYo)** — essays on learning AI, in public.
 Static HTML/CSS, zero JavaScript, self-hosted fonts, no trackers, no cookies.
 
@@ -10,8 +12,10 @@ Live at <https://muhyo.uz> (not yet deployed — see *Deploy*).
 ```
 index.html         Landing page (LEDGER direction — see DESIGN.md)
 essays.html        Essay archive (honest empty state until posts exist)
+404.html           Custom not-found page (noindex), same chrome
 posts/             Essays live here; _template.html is the starting point
 assets/            Fonts (woff2, self-hosted), halftone portrait, icons, OG image
+humans.txt         Who/how — no trackers, by hand
 build.py           Zero-dependency regenerator: essay list + RSS + sitemap
 styles.css         Design tokens + styles (light "Paper" / dark "Midnight")
 DESIGN.md          The design contract: direction, tokens, bans, verification bar
@@ -50,8 +54,13 @@ npm ci                                   # pins puppeteer-core + axe-core
 python3 -m http.server 8137 &            # serve the folder
 CHROME_PATH=$(find .firecrawl/browsers -name chrome-headless-shell -type f) \
   node tools/verify.mjs /                # screenshots + axe + LCP/CLS
+# (also: /essays.html and /404.html — npm run verify:essays, npm run verify:404)
 npx lighthouse http://127.0.0.1:8137/ --chrome-path="$CHROME_PATH"
 ```
+
+`.github/workflows/verify.yml` runs the same gates on every push: `build.py`
+idempotence (generated files must match), real-browser verification of `/`,
+`/essays.html`, `/404.html`, and W3C Nu validation of the four HTML entry points.
 
 Chrome for Testing is fetched via `npx @puppeteer/browsers install chrome-headless-shell@stable --path .firecrawl/browsers`.
 
@@ -61,3 +70,7 @@ Chrome for Testing is fetched via `npx @puppeteer/browsers install chrome-headle
 2. **LinkedIn URL** — `https://www.linkedin.com/in/muhyo` is a guess from the handle `@muhyo`; verify or replace in `index.html` / `essays.html`.
 3. **Deploy + DNS** for `muhyo.uz` is not yet done.
 4. **Firecrawl** was blocked from this machine (no API key from this IP); the reference `brianan.ca` was analyzed via direct fetch + local mirror instead. See DESIGN.md §2.
+
+## License
+
+Code, styles and build tooling: [MIT](LICENSE). Essays, the portrait, OG image and the MuhYo wordmark: © Muhammadyokub Yusuf, all rights reserved — quoting with attribution is fine.

@@ -1,0 +1,35 @@
+Copyright (c) 2026 Muhammadyokub Yusuf (MuhYo)
+
+This repository carries two kinds of material, under two terms:
+
+1. CODE, STYLES AND BUILD TOOLING — the markup, CSS, build.py, tools/ and
+   .github/workflows/. These are released under the MIT License (full text below).
+
+2. CONTENT — everything published as writing or identity: posts/ essays, the site
+   copy in index.html / essays.html / 404.html, DESIGN.md and VERIFICATION.md, the
+   halftone portrait (assets/portrait-dots-*.svg), the OG image (assets/og-image.png)
+   and the "MuhYo." wordmark. These remain © Muhammadyokub Yusuf, all rights
+   reserved. Verbatim republication is not licensed; quoting with attribution and a
+   link is fine.
+
+---
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

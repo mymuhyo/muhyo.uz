@@ -3,9 +3,22 @@
   "version": "1.0.0",
   "private": true,
   "description": "MuhYo — essays on learning AI, in public. Static HTML/CSS, zero JS, self-hosted fonts.",
+  "homepage": "https://muhyo.uz",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mymuhyo/muhyo.uz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mymuhyo/muhyo.uz/issues"
+  },
+  "license": "MIT",
+  "author": "Muhammadyokub Yusuf (https://muhyo.uz)",
   "scripts": {
     "build": "python3 build.py",
-    "verify": "node tools/verify.mjs /"
+    "serve": "python3 -m http.server 8137",
+    "verify": "node tools/verify.mjs /",
+    "verify:essays": "node tools/verify.mjs /essays.html",
+    "verify:404": "node tools/verify.mjs /404.html"
   },
   "devDependencies": {
     "axe-core": "^4.14.0",

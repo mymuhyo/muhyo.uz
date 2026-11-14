@@ -57,7 +57,7 @@ Justified exceptions: **dark theme** (owner likes "blue darker" — implemented 
 
 ## 4. Type
 
-- **Display & body (text): Newsreader** (variable, `opsz` axis, Google Fonts, self-hosted woff2) — designed for long-form reading; high-contrast editorial serif; Uzbek-Latin coverage OK (Latin Extended; note: no Cyrillic/Arabic-script glyphs — Uzbek in Uzbek-Latin script only).
+- **Display & body (text): Newsreader** (variable, `opsz` axis, Google Fonts, self-hosted woff2) — designed for long-form reading; high-contrast editorial serif; Uzbek-Latin coverage OK (Latin Extended; note: no Cyrillic/Arabic-script glyphs — Uzbek in Uzbek-Latin script only). All `@font-face` rules are inlined at the top of `styles.css` — an earlier `@import 'assets/fonts/fonts.css'` serialized a second stylesheet fetch into the critical path for nothing; the separate file is gone.
 - **Meta & labels (UI): JetBrains Mono** — dates, kickers, section indices, RSS; gives the engineer's-notebook register and prevents "designer serif + designer sans" cliché.
 - **Rejected:** Inter (banned tell), Playfair/Bodoni (too fashion-luxury for an engineer), Cormorant (too fragile at text sizes), all-sans Geist homage (would be the reference with palette swapped).
 
@@ -117,12 +117,13 @@ Selection: `--accent` at 18% alpha, both themes. `theme-color` meta matches `--b
 ## 7. Motion
 
 - None on load. Hover = `color`/`border-color`/`text-decoration` 160ms ease-out. Focus = instant ring (never animated). Active = color-only.
+- Cross-document `@view-transition { navigation: auto }` — a 200ms opacity crossfade between same-origin pages (index/essays/posts/404). CSS-only, no JS; unsupported engines navigate normally. Cancelled entirely under `prefers-reduced-motion: reduce` (`navigation: none` there).
 - Any future motion must use transform/opacity only, and live inside `@media (prefers-reduced-motion: no-preference)`. Under reduce: everything is static; color transitions remain but under 200ms.
 - No JS-driven animation anywhere; there is no JS.
 
 ## 8. Components (built against this contract)
 
-`skip-link · header (wordmark + nav: Essays, About, RSS) · hero (kicker, h1, lede, CTA row, portrait figure w/ figcaption) · essays section (ruled list + honest in-progress state) · about section (bio + "what an essay covers") · colophon (footer: name, year, socials as inline SVG+text) · essays.html (index with empty state) · post template · rss.xml · build.py (zero-dep: scans posts/*.html → regenerates list + rss) · robots.txt · sitemap.xml`
+`skip-link · header (wordmark + nav: Essays, About, RSS) · hero (kicker, h1, lede, CTA row, portrait figure w/ figcaption) · essays section (ruled list + honest in-progress state) · about section (bio + "what an essay covers") · colophon (footer: name, year, socials as inline SVG+text, plus mono **to-top** link under its own hairline row — `flex:none; width:100%; max-width:none`, avoiding the global `p { max-width: 68ch }` clamp) · essays.html (index with empty state) · post template · rss.xml · build.py (zero-dep: scans posts/*.html → regenerates list + rss; list rows carry a mono date, Newsreader title and a hover‑revealed **essay-arrow** (opacity/transform 160ms; always visible under `hover: none`)) · robots.txt · sitemap.xml · **404.html** (noindex, same chrome, honest copy + two doors: Read the Essays / Home) · **humans.txt** · **print stylesheet** (`@page` 2cm; nav/portrait/CTA/socials/arrows hidden; ink-only links; `break-inside: avoid` on rows/facts — the page prints as paper) · **forced-colors support** (Windows High Contrast: system keywords for chrome, `Highlight` focus ring, `CanvasText` hairlines) · **prefers-contrast: more** (meta text promoted to soft ink, accent darkened, hairlines strengthened — both themes)`
 
 ## 9. Copy rules
 
