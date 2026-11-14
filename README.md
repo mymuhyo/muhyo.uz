@@ -3,7 +3,7 @@
 [![verify](https://github.com/mymuhyo/muhyo.uz/actions/workflows/verify.yml/badge.svg)](https://github.com/mymuhyo/muhyo.uz/actions/workflows/verify.yml)
 
 Personal site of **Muhammadyokub Yusuf (MuhYo)** — essays on learning AI, in public.
-Static HTML/CSS, zero JavaScript, self-hosted fonts, no trackers, no cookies.
+Static HTML/CSS, self-hosted fonts, privacy-focused analytics via Vercel Web Analytics.
 
 Live at <https://muhyo.uz> (not yet deployed — see *Deploy*).
 
