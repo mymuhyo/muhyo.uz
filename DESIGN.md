@@ -34,7 +34,7 @@ This file is the design contract. Components follow it; they don't negotiate wit
 > Paper and ink, not screens and gradients. An engineer's reading room: warm paper, deep-navy ink, one cobalt accent borrowed from the logo, a serif built for long-form reading, and a mono for the marginalia — dates, kickers, coordinates.
 
 - Editorial, not decorative. Every element is either type, rule (hairline), or the one image.
-- **Signature move:** the portrait is a generated **halftone dot field** (dots sized by luminance, navy-on-paper / paper-on-navy) — an original execution of the one reference's best trick, with his own photo. Dots are `currentColor` SVG: one asset, both themes.
+- **Signature move:** the portrait is a generated **halftone dot field** built from his own photo with the background removed (local `rembg`, `u2netp`) — face emerges from negative space, no wall/door noise. Dots sized by luminance, navy-on-paper / paper-on-navy, face emerges from transparency. Two SVGs: `assets/portrait-dots-light.svg`, `assets/portrait-dots-dark.svg` (selected via `<picture>` + `prefers-color-scheme`).
 - **Signature restraint:** zero shadows, zero gradients (except none), zero glass, zero radius above 2px, zero icons except the three brand marks + RSS + arrow, zero stock imagery, zero illustrations.
 - Honest by construction: without essays to list, the page says so — "The first essays are being written" — instead of shipping fake cards.
 
