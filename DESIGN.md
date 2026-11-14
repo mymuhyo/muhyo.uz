@@ -14,7 +14,7 @@ This file is the design contract. Components follow it; they don't negotiate wit
 - **Offer & proof:** Essays themselves. **Proof: none available.** No metrics, employers, press, or testimonials are listed or implied anywhere on the page — credibility is carried by specificity and craft, not invented trust signals.
 - **Brand assets:** `muhyo.uz` domain; glossy 3D badge logo (`~/Pictures/MuhYo-logo.png`); "darker blue, professional, minimal"; socials — GitHub `@mymuhyo`, X `@muhyoyusuf`, LinkedIn `@muhyo`. No existing copy, no photo selected for web (one usable: `~/Pictures/my_face.jpg`, 2544×3392).
 - **Content state:** zero essays published. First essays being written (interview answered (b) — starter essays, author-written/approved). **Until real essays exist, the page must not pretend they do.** The honest empty state is part of the direction.
-- **Framework:** none. Static HTML/CSS, zero JS. Justification: content-first single page + tiny essays index; no interactivity justifies no runtime; maximizes LCP/CLS, guarantees JS-disabled parity, trivial long-term maintenance for a one-person site.
+- **Framework:** none. Static HTML/CSS, zero JS (single documented exception, see §6: the Vercel Web Analytics snippet). Justification: content-first single page + tiny essays index; no interactivity justifies no runtime; maximizes LCP/CLS, guarantees JS-disabled parity, trivial long-term maintenance for a one-person site.
 
 ## 2. Raw material, and what it taught us
 
@@ -53,7 +53,7 @@ This file is the design contract. Components follow it; they don't negotiate wit
 | Emojis as icons | Banned — vector icons only (simple-icons CC0). |
 | Carousels / autoplaying motion | Banned — nothing moves on load; no scroll hijacking (modern-web-guidance: default static). |
 
-Justified exceptions: **dark theme** (owner likes "blue darker" — implemented as a true second theme, §5), **Newsreader italic** for one pull-line (it's the font doing its job).
+Justified exceptions: **dark theme** (owner likes "blue darker" — implemented as a true second theme, §5), **Newsreader italic** for one pull-line (it's the font doing its job), **Vercel Web Analytics** (owner-enabled, 2026-11-14; snippet added by the Vercel agent PR #1): one deferred third-party script (`cdn.vercel-insights.com/v1/script.js`), cookieless, no fingerprinting, no PII — aggregate visitor/page counts only. The framework ban (no JS) stands unchanged for everything else; no other script may be added without the same explicit justification.
 
 ## 4. Type
 

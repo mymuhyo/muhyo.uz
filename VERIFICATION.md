@@ -111,3 +111,23 @@ marketing copy for itself — raw numbers are raw numbers.
 - Manual screen-reader pass, human five-second test — still open, unchanged.
 - forced-colors/print were verified by emulation screenshots, not on real Windows
   High Contrast hardware or a physical printer.
+
+## 2026-11-14 (night) — Analytics exception merged; claims re-audited
+
+PR #1 (Vercel Web Analytics, snippet-only install) merged as `7260d6a` after its
+branch picked up the zero-build fix (`f3775b2` — STATIC_BUILD_NO_OUT_DIR); the
+duplicate PR #2 was closed unmerged by the owner. The owner enabled Web Analytics
+deliberately; DESIGN.md's zero-JS contract now carries one explicit, documented
+exception (§6). The dead `@vercel/analytics` devDependency was never imported
+(plain HTML uses the deferred CDN snippet; the package wraps React/Next) — removed.
+
+Re-verified after the merge (all on the merged tree):
+- `build.py` idempotent; W3C Nu: **0 errors** on index/essays/404/posts/_template.html.
+- Real browser (chrome-headless-shell, Slow 4G + 4× CPU): `/`, `/essays.html`, `/404.html` —
+  0 console errors, 0 pageerrors, 0 request failures, **0 axe violations** (light & dark).
+  LCP 1040 / 228 / 124 ms, CLS 0.0132 / 0 / 0 — within the 0.1 budget. Note: `/` LCP
+  regressed vs the pre-merge 168 ms pass (the analytics request now shares the throttled
+  connection); still ~1s, far under the 2.5s bar.
+- Honest-claim pass: humans.txt, README deploy section, git remote description and
+  package.json description now state the analytics reality; "zero JS / no trackers"
+  survives as the documented default with exactly one exception.

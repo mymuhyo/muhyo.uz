@@ -5,7 +5,7 @@
 Personal site of **Muhammadyokub Yusuf (MuhYo)** — essays on learning AI, in public.
 Static HTML/CSS, self-hosted fonts, privacy-focused analytics via Vercel Web Analytics.
 
-Live at <https://muhyo.uz> (not yet deployed — see *Deploy*).
+**Live at <https://muhyo.uz>** — deployed on Vercel (zero-build static, `vercel.json`), DNS via Cloudflare (`@` → Vercel anycast), auto-deploys on every push to `main`. The former site is at <https://old.muhyo.uz>.
 
 ## Layout
 
@@ -15,7 +15,7 @@ essays.html        Essay archive (honest empty state until posts exist)
 404.html           Custom not-found page (noindex), same chrome
 posts/             Essays live here; _template.html is the starting point
 assets/            Fonts (woff2, self-hosted), halftone portrait, icons, OG image
-humans.txt         Who/how — no trackers, by hand
+humans.txt         Who/how — honest by hand, analytics disclosure
 build.py           Zero-dependency regenerator: essay list + RSS + sitemap
 styles.css         Design tokens + styles (light "Paper" / dark "Midnight")
 DESIGN.md          The design contract: direction, tokens, bans, verification bar
@@ -32,8 +32,7 @@ Once at least one essay exists, the "first drafts in progress" block hides itsel
 
 ## Deploy
 
-Any static host works — GitHub Pages, Cloudflare Pages, Netlify, or plain nginx/rsync.
-Everything is relative paths; serve the folder root at `muhyo.uz/`. Point the apex + `www` at the host, keep HTTPS, and the absolute URLs in `rss.xml` / `sitemap.xml` / Open Graph tags (`https://muhyo.uz/…`) stay correct.
+Deployed on **Vercel** (team `muhyoyusuf`, project `muhyo.uz`) from this repository — pushes to `main` build and deploy automatically. `vercel.json` pins a zero-build static deployment (`outputDirectory: "."`): the committed files are served verbatim, so no remote build step can break (`.vercelignore` confines the deployment to the public surface). The apex `muhyo.uz` resolves via Cloudflare (`A` → `216.198.79.1`) to Vercel; `old.muhyo.uz` keeps the previous site on the `new-blog` project. HTTPS is via Vercel-managed certificates. Any static host works the same — everything is relative paths; serve the folder root at `muhyo.uz/` and the absolute URLs in `rss.xml` / `sitemap.xml` / Open Graph tags stay correct.
 
 ## Assets & licenses
 
@@ -68,9 +67,9 @@ Chrome for Testing is fetched via `npx @puppeteer/browsers install chrome-headle
 
 1. **Starter essays** — first essays are being written; until one is approved and published, the archive shows the designed empty state. This is deliberate, not a bug.
 2. **LinkedIn URL** — `https://www.linkedin.com/in/muhyo` is a guess from the handle `@muhyo`; verify or replace in `index.html` / `essays.html`.
-3. **Deploy + DNS** for `muhyo.uz` is not yet done.
+3. **`www.muhyo.uz`** — no DNS record yet; to enable: add a Cloudflare `CNAME` `www` → `cname.vercel-dns.com` (grey-cloud), then attach `www.muhyo.uz` to the project in Vercel (it redirects to the apex automatically).
 4. **Firecrawl** was blocked from this machine (no API key from this IP); the reference `brianan.ca` was analyzed via direct fetch + local mirror instead. See DESIGN.md §2.
-5. **Verify workflow** — `.github/workflows/verify.yml` is present in this repo's history preparation but can't be pushed with the current OAuth token (no `workflow` scope). Run `gh auth refresh -h github.com -s workflow` (approve in the browser), then `git add .github/workflows/verify.yml && git commit -m "ci: verify workflow" && git push` — or paste the file in via the web editor. Until then the badge above shows no status and CI gates are enforced only locally (see above).
+5. **Verify workflow** — `.github/workflows/verify.yml` is present in this repo but can't be pushed with the current OAuth token (no `workflow` scope). Run `gh auth refresh -h github.com -s workflow` (approve in the browser), then `git add .github/workflows/verify.yml && git commit -m "ci: verify workflow" && git push` — or paste the file in via the web editor. Until then the badge above shows no status and CI gates are enforced only locally (see above).
 
 ## License
 

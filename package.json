@@ -2,7 +2,7 @@
   "name": "muhyo.uz",
   "version": "1.0.0",
   "private": true,
-  "description": "MuhYo — essays on learning AI, in public. Static HTML/CSS, zero JS, self-hosted fonts.",
+  "description": "MuhYo — essays on learning AI, in public. Static HTML/CSS, self-hosted fonts, cookieless Vercel Web Analytics.",
   "homepage": "https://muhyo.uz",
   "repository": {
     "type": "git",
@@ -21,7 +21,6 @@
     "verify:404": "node tools/verify.mjs /404.html"
   },
   "devDependencies": {
-    "@vercel/analytics": "^2.0.1",
     "axe-core": "^4.14.0",
     "puppeteer-core": "^25.17.0"
   }

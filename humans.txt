@@ -6,9 +6,10 @@ X: https://x.com/muhyoyusuf
 LinkedIn: https://www.linkedin.com/in/muhyo
 
 /* SITE */
-Built by hand: static HTML + CSS. Zero JavaScript.
+Built by hand: static HTML + CSS. No JavaScript except the Vercel Web Analytics snippet.
 Fonts: Newsreader & JetBrains Mono — self-hosted, subset latin + latin-ext.
 Colors: paper & ink, one cobalt accent. Dark theme follows prefers-color-scheme.
-No trackers, no cookies, no analytics, no popups, no newsletter capture.
+No cookies, no fingerprinting, no personal data. Analytics: Vercel Web Analytics (cookieless, aggregate counts).
+No popups, no newsletter capture.
 Images: hand-generated halftone portrait from the author's photo.
 Feed: https://muhyo.uz/rss.xml
