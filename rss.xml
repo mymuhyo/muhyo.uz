@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MuhYo — Essays on Learning AI, in Public</title>
+    <link>https://muhyo.uz/</link>
+    <description>Essays by Muhammadyokub Yusuf (MuhYo) on learning computer science and AI in public.</description>
+    <language>en</language>
+    <atom:link href="https://muhyo.uz/rss.xml" rel="self" type="application/rss+xml"/>
+    <!-- ESSAYS_START — build.py regenerates items -->
+
+    <!-- ESSAYS_END -->
+  </channel>
+</rss>
