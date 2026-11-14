@@ -70,6 +70,7 @@ Chrome for Testing is fetched via `npx @puppeteer/browsers install chrome-headle
 2. **LinkedIn URL** — `https://www.linkedin.com/in/muhyo` is a guess from the handle `@muhyo`; verify or replace in `index.html` / `essays.html`.
 3. **Deploy + DNS** for `muhyo.uz` is not yet done.
 4. **Firecrawl** was blocked from this machine (no API key from this IP); the reference `brianan.ca` was analyzed via direct fetch + local mirror instead. See DESIGN.md §2.
+5. **Verify workflow** — `.github/workflows/verify.yml` is present in this repo's history preparation but can't be pushed with the current OAuth token (no `workflow` scope). Run `gh auth refresh -h github.com -s workflow` (approve in the browser), then `git add .github/workflows/verify.yml && git commit -m "ci: verify workflow" && git push` — or paste the file in via the web editor. Until then the badge above shows no status and CI gates are enforced only locally (see above).
 
 ## License
 
