@@ -1,15 +1,12 @@
 {
-  "name": "landing-page",
+  "name": "muhyo.uz",
   "version": "1.0.0",
-  "description": "Personal site of **Muhammadyokub Yusuf (MuhYo)** — essays on learning AI, in public. Static HTML/CSS, zero JavaScript, self-hosted fonts, no trackers, no cookies.",
-  "main": "index.js",
+  "private": true,
+  "description": "MuhYo — essays on learning AI, in public. Static HTML/CSS, zero JS, self-hosted fonts.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "python3 build.py",
+    "verify": "node tools/verify.mjs /"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
     "axe-core": "^4.14.0",
     "puppeteer-core": "^25.17.0"
