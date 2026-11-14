@@ -423,7 +423,6 @@ a:hover {
   padding: 0;
 }
 
-.essay-list:empty { display: none; }
 
 .essay-list li {
   border-top: 1px solid var(--hairline);

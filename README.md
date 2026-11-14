@@ -42,12 +42,18 @@ Everything is relative paths; serve the folder root at `muhyo.uz/`. Point the ap
 
 ## Verification
 
-See DESIGN.md §10 for the bar. Screenshots, Lighthouse, axe, W3C validation
-and the Vercel Web Interface Guidelines audit are run against a local server:
+See **VERIFICATION.md** for the full audit: every gate, its numbers, the Vercel Web
+Interface Guidelines findings, and the honest limitations. Reproduce locally:
 
 ```sh
-python3 -m http.server 8137   # serve the folder
+npm ci                                   # pins puppeteer-core + axe-core
+python3 -m http.server 8137 &            # serve the folder
+CHROME_PATH=$(find .firecrawl/browsers -name chrome-headless-shell -type f) \
+  node tools/verify.mjs /                # screenshots + axe + LCP/CLS
+npx lighthouse http://127.0.0.1:8137/ --chrome-path="$CHROME_PATH"
 ```
+
+Chrome for Testing is fetched via `npx @puppeteer/browsers install chrome-headless-shell@stable --path .firecrawl/browsers`.
 
 ## Open dependencies (owner action)
 

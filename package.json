@@ -1,0 +1,17 @@
+{
+  "name": "landing-page",
+  "version": "1.0.0",
+  "description": "Personal site of **Muhammadyokub Yusuf (MuhYo)** — essays on learning AI, in public. Static HTML/CSS, zero JavaScript, self-hosted fonts, no trackers, no cookies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "puppeteer-core": "^25.17.0"
+  }
+}
