@@ -81,7 +81,12 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  touch-action: manipulation;
 }
+
+[id] { scroll-margin-top: var(--s-6); }
+
+a, .btn { -webkit-tap-highlight-color: var(--selection); }
 
 @media (pointer: fine) {
   html { overscroll-behavior: none; }
@@ -112,7 +117,7 @@ p {
 
 /* ---------- Focus ---------- */
 
-:focus { outline: none; }
+:focus:not(:focus-visible) { outline: none; }
 
 :focus-visible {
   outline: 2px solid var(--focus);
